@@ -2,10 +2,11 @@
 /* eslint-disable func-names, prefer-arrow-callback, no-loop-func, max-len */
 
 import { assert } from 'chai';
+import parseArgv from '../../src/cli/parseArgv';
 
 describe('parseArgv', function () {
   beforeEach(function () {
-    this.parseArgv = require('../../src/cli/parseArgv').default;
+    this.parseArgv = parseArgv;
     this.argv = [
       'src',
     ];

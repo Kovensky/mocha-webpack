@@ -178,12 +178,13 @@ const parameters = paramList(options); // camel case parameters
 const parametersWithMultipleArgs = paramList(_.pickBy(_.mapValues(options, (v) => !!v.requiresArg && v.multiple === true))); // eslint-disable-line max-len
 const groupedAliases = _.values(_.mapValues(options, (value, key) => [_.camelCase(key), key, value.alias].filter(_.identity))); // eslint-disable-line max-len
 
+import { version } from '../../package.json';
 
 export default function parseArgv(argv, ignoreDefaults = false) {
   const parsedArgs = yargs(argv)
     .help('help')
     .alias('help', 'h', '?')
-    .version(() => require('../../package.json').version)
+    .version(() => version)
     .demand(0, 1)
     .options(options)
     .strict()
